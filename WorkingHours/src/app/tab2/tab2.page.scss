@@ -1,0 +1,23 @@
+.circle {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: none;
+    &--red {
+        background-color: red;
+    }
+    &--green {
+        background-color: green;
+    }
+}
+ion-list-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    ion-item {
+        width: 100%;
+    }
+    ion-label {
+        margin-left: 5px;
+    }
+}

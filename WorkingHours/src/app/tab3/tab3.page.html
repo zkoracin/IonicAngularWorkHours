@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <app-toolbar title="Export"></app-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <app-toolbar title="Export" size="large"></app-toolbar>
+  </ion-header>
+
+  <ion-list [inset]="true">
+    <ion-list-header>
+      <ion-label>Select</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-datetime-button datetime="month"></ion-datetime-button>
+    </ion-item>
+    <ion-item [button]="true" (click)="onDownload()">
+      <ion-icon aria-hidden="true" name="cloud-download" slot="start"></ion-icon>
+      <ion-label>Download</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime 
+        id="month"
+        presentation="month-year"
+        locale="sl-SI"
+        [(ngModel)]="date"
+        (ionChange)="onChange($event)"
+        >
+      </ion-datetime>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-toast
+  [isOpen]="isToastOpen"
+  [message]="toastMsg"
+  [duration]="2000"
+  (didDismiss)="setOpen(false)"
+  ></ion-toast>

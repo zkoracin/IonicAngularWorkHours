@@ -1,0 +1,7 @@
+ion-datetime-button {
+    &::part(native) {
+        width: 100%;
+        padding: 13px 0;
+        border-radius: 14px;
+    }
+}

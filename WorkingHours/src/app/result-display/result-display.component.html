@@ -1,0 +1,18 @@
+@for(result of databaseService.workTimes(); track result.id) {
+  <ion-item [class.red]="result.sick_leave" [class.green]="result.vacation" (click)="onResultSelect(result)">
+    <ion-label>
+      <strong>{{ result.date | date:'dd.MM.YYYY' }}</strong><br/>
+      <ion-note color="medium" class="ion-text-wrap">
+        {{ result.started | date:'HH:mm' }} - {{ result.finished | date:'HH:mm' }}
+      </ion-note>
+    </ion-label>
+    <div class="metadata-end-wrapper" slot="end">
+      <ion-note color="medium">{{ result.work_time }} H</ion-note>
+    </div>
+  </ion-item>
+} @empty {
+  <ion-item>
+    <ion-label>No results for this month</ion-label>
+  </ion-item>
+}
+

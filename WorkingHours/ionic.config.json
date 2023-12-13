@@ -1,0 +1,7 @@
+{
+  "name": "WorkingHours",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

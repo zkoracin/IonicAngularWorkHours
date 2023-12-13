@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <app-toolbar title="Add"></app-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <app-toolbar title="Add" size="large"></app-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-label>
+              Date
+            </ion-label>
+            <ion-datetime-button datetime="date" class="ion-margin-bottom"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime 
+                  id="date"
+                  presentation="date"
+                  locale="sl-SI"
+                  [firstDayOfWeek]="1"
+                  [(ngModel)]="date">
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
+
+            <ion-label>
+              Work start:
+            </ion-label>
+            <ion-datetime-button datetime="start" class="ion-margin-bottom"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                  id="start"
+                  presentation="time"
+                  hourCycle="h23"
+                  [(ngModel)]="start"
+                  >
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
+
+            <ion-label>
+              Work finish:
+            </ion-label>
+            <ion-datetime-button datetime="end" class="ion-margin-bottom"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime 
+                  id="end"
+                  presentation="time"
+                  hourCycle="h23"
+                  [(ngModel)]="end">
+                </ion-datetime>
+              </ng-template>
+            </ion-modal>
+
+            <ion-list>
+              <ion-list-header>
+                <ion-label>Optional</ion-label>
+              </ion-list-header>
+              <ion-item>
+                <ion-checkbox [(ngModel)]="sickLeave" [disabled]="vacation">
+                  Sick leave
+                </ion-checkbox>
+              </ion-item>
+              <ion-item>
+                <ion-checkbox [(ngModel)]="vacation" [disabled]="sickLeave">
+                  Vacation
+                </ion-checkbox>
+              </ion-item>
+            </ion-list>
+            <ion-button (click)="onSubmit()" expand="block" class="ion-margin-top">
+              Add entry
+            </ion-button>           
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-toast
+    [isOpen]="isToastOpen"
+    [message]="toastMsg"
+    [duration]="2000"
+    (didDismiss)="setOpen(false)"
+  ></ion-toast>
+</ion-content>

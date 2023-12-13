@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <app-toolbar title="Overview"></app-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <app-toolbar title="Overview" size="large"></app-toolbar>
+  </ion-header>
+
+  <ion-list [inset]="true">
+    <ion-list-header>
+      <ion-label>Select month:</ion-label>
+      <ion-datetime-button datetime="month"></ion-datetime-button>
+      <ion-item>
+        <ion-label>Number of working hours: {{ workTimeSum?.sum_work_time }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of sick leave hours: {{ workTimeSum?.sum_sick_leave }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of vacation hours: {{ workTimeSum?.sum_vacation }}</ion-label>
+      </ion-item>
+    </ion-list-header>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime 
+          id="month"
+          presentation="month-year"
+          locale="sl-SI"
+          [(ngModel)]="month"
+          (ionChange)="onChange($event)"
+          >
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <app-result-display>
+    </app-result-display>
+  </ion-list>
+
+</ion-content>
